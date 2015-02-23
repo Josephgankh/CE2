@@ -37,18 +37,30 @@ In this program, the file is saved to the disk after each user operation
 */
 
 #include "TextBuddy.h"
-#include <algorithm>
 
-vector<string> TextBuddy::textList;
 const string TextBuddy::ERROR_INVALID_COMMAND = "ERROR: Unrecognised command\n";
 
-// This Function saves the current data into outputFile.txt either by creating a new file or overwriting the previous file
-void TextBuddy::saveFile (string outputFile) {
-	ofstream myfile;
-	myfile.open(outputFile.c_str());
-	int i=0;
+int main(int argc, char* argv[]) {
+	TextBuddy program;
+	
+	program.outputFile = argv[1];
 
-	while (i<textList.size()) {
+	cout << "Welcome to TextBuddy. "<< argv[1] <<" is ready for use"<<endl<<endl;
+	cout << "command: ";
+
+	program.executeProgram();
+
+	return 0;
+}
+
+
+// This Function saves the current data into outputFile.txt either by creating a new file or overwriting the previous file
+void TextBuddy::saveFile () {
+	ofstream myfile;
+	myfile.open((outputFile).c_str());
+	int i=0;
+	
+	while (i < textList.size()) {
 		myfile<<i+1<<". "<< textList[i] <<endl;
 		++i;
 	}
@@ -60,22 +72,24 @@ void TextBuddy::showToUser(string text) {
 	cout<<endl<< text <<endl;
 }
 
-string TextBuddy::executeCommand(string command, string outputFile) {
+string TextBuddy::executeCommand(string command) {
 	if (command == "add")
-		return addText(outputFile);
+		return addText();
 	else if (command == "delete")
-		return deleteText(outputFile);
+		return deleteText();
 	else if (command == "display")
-		return displayText(outputFile);
+		return displayText();
 	else if (command == "clear")
-		return clearText(outputFile);
+		return clearText();
 	else if (command == "sort")
 		return sort();
+	else if (command == "search")
+		return search();
 	else return ERROR_INVALID_COMMAND;
 }
 
 // Reads in a line of words and adds them into the next empty slot
-string TextBuddy::addText(string outputFile) {
+string TextBuddy::addText() {
 	string words; 
 	
 
@@ -84,26 +98,14 @@ string TextBuddy::addText(string outputFile) {
 	//To remove the blank space before the sentence
 	words = words.substr(1);
 	textList.push_back(words);
-	
+
 	ostringstream out;
 	out << "added to "<< outputFile.c_str()<<": \"" << words <<"\""<<endl;
 	return out.str();
 }
 
-//Searches through the array and searches for an empty slot and returns the corresponding index
-int TextBuddy::findEmpty(vector<string> textList) {
-	int i = 0;
-	
-	while (textList[i]!="" && i<MAX_SIZE) {
-		//include (i<MAX_SIZE) to take into account the case where entire array is full 
-		++i;
-	}
-
-	return i;
-}
-
 //Reads in a positive integer and deletes the line of words corresponding to that index
-string TextBuddy::deleteText(string outputFile) {
+string TextBuddy::deleteText() {
 	int index;
 	cin >> index;
 
@@ -119,7 +121,7 @@ string TextBuddy::deleteText(string outputFile) {
 	return out.str();
 }
 
-string TextBuddy::displayText(string outputFile) {
+string TextBuddy::displayText() {
 	ostringstream out;
 	int i=0;
 
@@ -137,7 +139,7 @@ string TextBuddy::displayText(string outputFile) {
 }
 
 //empty the entire file
-string TextBuddy::clearText(string outputFile) {
+string TextBuddy::clearText() {
 	textList.clear();
 
 	ostringstream out;
@@ -145,14 +147,14 @@ string TextBuddy::clearText(string outputFile) {
 	return out.str();
 }
 
-void TextBuddy::executeProgram (TextBuddy program) {
+void TextBuddy::executeProgram () {
 	string command;
 	
 	cin >> command;	
 
 	while (command!="exit") {
-		program.showToUser(program.executeCommand(command, program.outputFile));
-		program.saveFile(program.outputFile);
+		showToUser(executeCommand(command));
+		saveFile();
 		cout << "command: ";
 		cin >> command;	
 	}
@@ -166,15 +168,26 @@ string TextBuddy::sort () {
 	return out.str();
 }
 
-int main(int argc, char* argv[]) {
-	TextBuddy program;
-	
-	program.outputFile = argv[1];
+string TextBuddy::search() {
+	string word;
+	ostringstream out;
+	bool found = false;
+	int i=0, j=0;
 
-	cout << "Welcome to TextBuddy. "<< argv[1] <<" is ready for use"<<endl<<endl;
-	cout << "command: ";
+	cin>>word;
 
-	program.executeProgram(program);
+	while (i<textList.size()) {
+		if (textList[i].find(word)!=-1) {
+			if (j!=0)
+				out <<endl;
+			out << j+1 <<". " << textList[i] <<endl;
+			++j;
+		}
+		++i;
+	}
+	if (i==0) {
+		out << word <<" not found" << endl;
+	}
 
-	return 0;
+	return out.str();
 }
