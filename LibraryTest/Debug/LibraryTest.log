@@ -1,0 +1,13 @@
+﻿Build started 24/2/2015 1:48:00 AM.
+     1>Project "C:\Users\Joseph\Documents\CE2\LibraryTest\LibraryTest.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Joseph\Documents\CE2\Debug\TextBuddyTest.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\UnitTest\lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Joseph\Documents\CE2\Debug\TextBuddyTest.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Joseph\Documents\CE2\Debug\TextBuddyTest.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
+         Debug\TextBuddyTest.obj
+            Creating library C:\Users\Joseph\Documents\CE2\Debug\TextBuddyTest.lib and object C:\Users\Joseph\Documents\CE2\Debug\TextBuddyTest.exp
+     1>TextBuddyTest.obj : error LNK2019: unresolved external symbol "public: int __thiscall TextBuddy::findEmpty(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > * const)" (?findEmpty@TextBuddy@@QAEHQAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __thiscall TextBuddyTest::TextBuddyTest::ConstructorTest(void)" (?ConstructorTest@TextBuddyTest@1@QAEXXZ)
+     1>C:\Users\Joseph\Documents\CE2\Debug\TextBuddyTest.dll : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "C:\Users\Joseph\Documents\CE2\LibraryTest\LibraryTest.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.70

@@ -76,6 +76,13 @@ string TextBuddy::addText(string outputFile) {
 	string words; 
 	int j = findEmpty(textList);
 
+	//To take into account the case where entire array is full 
+	if (j==MAX_SIZE) {
+		ostringstream out;
+		out << "Array full!"<<endl;
+		return out.str();
+	}
+
 	getline(cin, words);
 
 	//To remove the blank space before the sentence
@@ -88,10 +95,11 @@ string TextBuddy::addText(string outputFile) {
 }
 
 //Searches through the array and searches for an empty slot and returns the corresponding index
-int TextBuddy::findEmpty(string textList[10]) {
+int TextBuddy::findEmpty(string textList[]) {
 	int i = 0;
 	
-	while (textList[i]!="")
+	while (textList[i]!="" && i<MAX_SIZE) 
+		//include (i<MAX_SIZE) to take into account the case where entire array is full 
 		++i;
 
 	return i;

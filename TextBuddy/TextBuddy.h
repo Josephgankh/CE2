@@ -58,7 +58,7 @@ private:
 
 public:
 	string outputFile;
-	int findEmpty(string textList[10]);
+	int findEmpty(string textList[]);
 	void showToUser(string text);
 	void saveFile (string outputFile);
 	string executeCommand(string command, string outputFile);
