@@ -46,6 +46,7 @@ In this program, the file is saved to the disk after each user operation
 #include <string>
 #include <stdio.h>
 #include <fstream>
+#include <vector>
 
 const int MAX_SIZE = 100;
 
@@ -54,11 +55,11 @@ using namespace std;
 class TextBuddy{
 private:
 	static const string ERROR_INVALID_COMMAND;
-	static string textList[MAX_SIZE];
+	static vector<string> textList;
 
 public:
 	string outputFile;
-	int findEmpty(string textList[]);
+	int findEmpty(vector<string> textList);
 	void showToUser(string text);
 	void saveFile (string outputFile);
 	string executeCommand(string command, string outputFile);
@@ -67,6 +68,7 @@ public:
 	string displayText(string outputFile);
 	string clearText(string outputFile);
 	void executeProgram (TextBuddy program);
+	string sort ();
 
 };
 
