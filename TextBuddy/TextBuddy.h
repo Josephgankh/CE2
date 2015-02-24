@@ -63,13 +63,13 @@ public:
 	void showToUser(string text);
 	void saveFile ();
 	string executeCommand(string command);
-	string deleteText();
-	string addText();
+	string deleteText(int index);
+	string addText(string str);
 	string displayText();
 	string clearText();
 	void executeProgram ();
 	string sort ();
-	string search();
+	string search(string str);
 
 };
 

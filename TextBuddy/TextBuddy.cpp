@@ -73,42 +73,56 @@ void TextBuddy::showToUser(string text) {
 }
 
 string TextBuddy::executeCommand(string command) {
-	if (command == "add")
-		return addText();
-	else if (command == "delete")
-		return deleteText();
-	else if (command == "display")
+	string str;
+	int index;
+	
+	if (command == "add") {
+		getline(cin, str);
+
+		//To remove the blank space before the sentence
+		str = str.substr(1);
+		
+		return addText(str);
+	}
+
+	else if (command == "delete") {
+		cin >> index;
+		return deleteText(index);
+	}
+
+	else if (command == "display") {
 		return displayText();
-	else if (command == "clear")
+	}
+
+	else if (command == "clear") {
 		return clearText();
-	else if (command == "sort")
+	}
+
+	else if (command == "sort") {
 		return sort();
-	else if (command == "search")
-		return search();
+	}
+
+	else if (command == "search") {
+		cin >> str;
+		return search(str);
+	}
+
 	else return ERROR_INVALID_COMMAND;
 }
 
 // Reads in a line of words and adds them into the next empty slot
-string TextBuddy::addText() {
-	string words; 
+string TextBuddy::addText(string str) {
 	
-
-	getline(cin, words);
-
-	//To remove the blank space before the sentence
-	words = words.substr(1);
-	textList.push_back(words);
+	textList.push_back(str);
 
 	ostringstream out;
-	out << "added to "<< outputFile.c_str()<<": \"" << words <<"\""<<endl;
+	out << "added to "<< outputFile.c_str()<<": \"" << str <<"\""<<endl;
 	return out.str();
 }
 
 //Reads in a positive integer and deletes the line of words corresponding to that index
-string TextBuddy::deleteText() {
-	int index;
-	cin >> index;
-
+string TextBuddy::deleteText(int index) {
+	
 	//A user input of 1 would refer to the 0th index of the array
 	--index; 
 
@@ -168,16 +182,13 @@ string TextBuddy::sort () {
 	return out.str();
 }
 
-string TextBuddy::search() {
-	string word;
+string TextBuddy::search(string str) {
 	ostringstream out;
 	bool found = false;
 	int i=0, j=0;
 
-	cin>>word;
-
 	while (i<textList.size()) {
-		if (textList[i].find(word)!=-1) {
+		if (textList[i].find(str)!=-1) {
 			if (j!=0)
 				out <<endl;
 			out << j+1 <<". " << textList[i] <<endl;
@@ -186,7 +197,7 @@ string TextBuddy::search() {
 		++i;
 	}
 	if (i==0) {
-		out << word <<" not found" << endl;
+		out << str <<" not found" << endl;
 	}
 
 	return out.str();

@@ -1,13 +1,13 @@
-Welcome to TextBuddy. mytestfile.txt is ready for use
+Welcome to TextBuddy. MyTestFile.txt is ready for use
 
 command: 
-added to mytestfile.txt: "little brown fox"
+added to MyTestFile.txt: "little brown fox"
 
 command: 
 1. little brown fox
 
 command: 
-added to mytestfile.txt: "jumped over the moon"
+added to MyTestFile.txt: "jumped over the moon"
 
 command: 
 1. little brown fox
@@ -15,7 +15,7 @@ command:
 2. jumped over the moon
 
 command: 
-added to mytestfile.txt: "over and over again"
+added to MyTestFile.txt: "over and over again"
 
 command: 
 1. little brown fox
@@ -25,7 +25,7 @@ command:
 3. over and over again
 
 command: 
-deleted from mytestfile.txt: "jumped over the moon"
+deleted from MyTestFile.txt: "jumped over the moon"
 
 command: 
 1. little brown fox
@@ -33,19 +33,19 @@ command:
 2. over and over again
 
 command: 
-all contents deleted from mytestfile.txt
+all contents deleted from MyTestFile.txt
 
 command: 
-mytestfile.txt is Empty
+MyTestFile.txt is Empty
 
 command: 
-added to mytestfile.txt: "once upon a time"
+added to MyTestFile.txt: "once upon a time"
 
 command: 
 1. once upon a time
 
 command: 
-added to mytestfile.txt: "a student took cs2103"
+added to MyTestFile.txt: "a student took cs2103"
 
 command: 
 1. once upon a time
