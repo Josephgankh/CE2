@@ -8,18 +8,33 @@ namespace TextBuddyTest
 	TEST_CLASS(TextBuddyTest)
 	{
 	public:
-		
-		TEST_METHOD(ConstructorTest)
+		TEST_METHOD(addText_Test)
 		{
-			TextBuddy program;
-			string test[5];
+			TextBuddy TextBuddy;
+			string expected = "added to test: \"Hello There\"\n";
+			string s1;
 
-			program.outputFile = "test";
-			int i = program.findEmpty(program.textList);
-	
-			Assert::AreEqual(0, 0);
-			
+			TextBuddy.outputFile = "test";
+			s1 = TextBuddy.addText("Hello There");
+
+			Assert::IsTrue(TextBuddy.textList[0] == "Hello There");
+			Assert::AreEqual(expected, s1);	
 		}
 
+		TEST_METHOD(clearText_Test)
+		{
+			TextBuddy TextBuddy;
+			string expected = "all contents deleted from test\n";
+			string s1;
+
+			TextBuddy.outputFile = "test";
+
+			TextBuddy.addText("testing"); 
+
+			s1 = TextBuddy.clearText();
+
+			Assert::AreEqual(expected, s1);
+			Assert::IsTrue(TextBuddy.textList.size() == 0);
+		}
 	};
 }
