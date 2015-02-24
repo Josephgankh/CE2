@@ -167,6 +167,8 @@ string TextBuddy::search(string str) {
 	bool found = false;
 	int i=0, j=0;
 
+	out << "searching for \""<<str<<"\"..."<<endl;
+
 	while (i<textList.size()) {
 		if (textList[i].find(str)!=-1) {
 			if (j!=0)
@@ -176,8 +178,8 @@ string TextBuddy::search(string str) {
 		}
 		++i;
 	}
-	if (i==0) {
-		out << str <<" not found" << endl;
+	if (j==0) {
+		out <<"\""<< str <<"\" not found" << endl;
 	}
 
 	return out.str();

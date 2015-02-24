@@ -70,7 +70,7 @@ namespace TextBuddyTest
 		TEST_METHOD(search_Test)
 		{
 			TextBuddy TextBuddy;
-			string expected = "testing not found\n";
+			string expected = "searching for \"testing\"...\ntesting not found\n";
 			string s1;
 
 			s1 = TextBuddy.search("testing"); 
@@ -82,7 +82,7 @@ namespace TextBuddyTest
 			TextBuddy.addText("Hello there there");
 			TextBuddy.addText("Hello here here");
 
-			expected = "1. Hello there\n\n2. Hello there there\n";
+			expected = "searching for \"there\"...\n1. Hello there\n\n2. Hello there there\n";
 			
 			s1 = TextBuddy.search("there");
 			
