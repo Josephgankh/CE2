@@ -67,6 +67,26 @@ namespace TextBuddyTest
 			Assert::AreEqual(s1, actual);
 		}
 
-		
+		TEST_METHOD(search_Test)
+		{
+			TextBuddy TextBuddy;
+			string expected = "testing not found\n";
+			string s1;
+
+			s1 = TextBuddy.search("testing"); 
+
+			Assert::AreEqual(expected, s1);
+			//searching for an object not in the list
+
+			TextBuddy.addText("Hello there");
+			TextBuddy.addText("Hello there there");
+			TextBuddy.addText("Hello here here");
+
+			expected = "1. Hello there\n\n2. Hello there there\n";
+			
+			s1 = TextBuddy.search("there");
+			
+			Assert::AreEqual(expected, s1);
+		}
 	};
 }
