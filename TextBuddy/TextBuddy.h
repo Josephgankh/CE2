@@ -54,21 +54,19 @@ const int MAX_SIZE = 100;
 using namespace std;
 
 class TextBuddy{
-private:
 public:
 	vector<string> textList;
 	string outputFile;
-	void showToUser(string text);
-	void saveFile ();
 	string executeCommand(string command);
 	string deleteText(int index);
 	string addText(string str);
 	string displayText();
 	string clearText();
-	void executeProgram ();
 	string sort ();
 	string search(string str);
-
+	void showToUser(string text);
+	void saveFile ();
+	void executeProgram ();
 };
 
 #endif
