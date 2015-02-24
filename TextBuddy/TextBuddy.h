@@ -55,8 +55,6 @@ using namespace std;
 
 class TextBuddy{
 private:
-	static const string ERROR_INVALID_COMMAND;
-
 public:
 	vector<string> textList;
 	string outputFile;
